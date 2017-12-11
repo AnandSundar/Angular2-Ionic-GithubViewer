@@ -9,6 +9,13 @@
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label fixed> Search Users</ion-label>
+      <ion-input (keyup)="searchUsers()" type="text" [(ngModel)]="searchText" value=""> </ion-input>
+    </ion-item>
+  </ion-list>
+
   <ion-list *ngIf="users">
     <button ion-item *ngFor="let user of users">
       <ion-avatar item-left>

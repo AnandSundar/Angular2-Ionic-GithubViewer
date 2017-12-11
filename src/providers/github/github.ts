@@ -19,4 +19,9 @@ export class GithubProvider {
   getUsers(){
     return this.http.get('https://api.github.com/users?client_id='+this.client_id+'&client_secret='+this.client_secret);
   }
+
+  searchUsers(searchText){
+    return this.http.get('https://api.github.com/search/users?q='+searchText+'&client_id='+this.client_id+'&client_secret='+this.client_secret);
+  }
+
 }
