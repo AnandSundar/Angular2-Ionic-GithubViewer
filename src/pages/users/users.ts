@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the UsersPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {GithubProvider} from '../../providers/github/github';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'users.html',
 })
 export class UsersPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  users: User[];
+  constructor(public github:GithubProvider, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UsersPage');
+    this.github.getUsers().subscribe(users => {
+      this.users = users;
+    });
   }
 
 }

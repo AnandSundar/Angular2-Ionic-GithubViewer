@@ -1,17 +1,22 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/Rx';
 
-/*
-  Generated class for the GithubProvider provider.
+//import {User} from '../users/Users';
 
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class GithubProvider {
 
+  client_id: string;
+  client_secret: string;
+
   constructor(public http: HttpClient) {
-    console.log('Hello GithubProvider Provider');
+    //this info is obtained from github
+    this.client_id = 'cbee512f8f4bbb520687';
+    this.client_secret = '831abb37b816f21d3d938d2b59f889b27d4334c9';
   }
 
+  getUsers(){
+    return this.http.get('https://api.github.com/users?client_id='+this.client_id+'&client_secret='+this.client_secret);
+  }
 }
