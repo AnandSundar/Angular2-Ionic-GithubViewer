@@ -24,4 +24,13 @@ export class GithubProvider {
     return this.http.get('https://api.github.com/search/users?q='+searchText+'&client_id='+this.client_id+'&client_secret='+this.client_secret);
   }
 
+  //details page
+  getUser(username) {
+      return this.http.get('https://api.github.com/users/'+username+'?client_id='+this.client_id+'&client_secret='+this.client_secret);
+  }
+
+  getRepos(username) {
+      return this.http.get('https://api.github.com/users/'+username+'/repos?client_id='+this.client_id+'&client_secret='+this.client_secret);
+  }
+
 }
